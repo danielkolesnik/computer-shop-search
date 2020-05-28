@@ -25,4 +25,14 @@ export default {
             password: Joi.string().required(),
         },
     },
+
+    // POST /api/computers/filter
+    filterComputers: {
+        body: {
+            gpu: Joi.number().optional(),
+            processor: Joi.number().optional(),
+            computer: Joi.string().optional(),
+            ram: Joi.number().optional()
+        }
+    }
 };

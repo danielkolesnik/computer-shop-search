@@ -6,7 +6,7 @@ import del from 'del';
 const plugins = gulpLoadPlugins();
 
 const paths = {
-    js: ['./**/*.js', '!dist/**', '!node_modules/**', '!coverage/**'],
+    js: ['./**/*.js', '!dist/**', '!node_modules/**', '!coverage/**', '!client/**'],
     nonJs: ['./package.json', './.gitignore', './.env'],
     tests: './server/tests/*.js',
 };
@@ -42,7 +42,7 @@ gulp.task('nodemon', gulp.series('copy', 'babel', (done) => {
     plugins.nodemon({
         script: path.join('dist', 'index.js'),
         ext: 'js',
-        ignore: ['node_modules/**/*.js', 'dist/**/*.js'],
+        ignore: ['node_modules/**/*.js', 'dist/**/*.js', 'client/**'],
         tasks: ['copy', 'babel'],
     });
     done();

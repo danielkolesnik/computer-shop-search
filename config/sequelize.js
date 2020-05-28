@@ -45,7 +45,14 @@ fs.readdirSync(modelsDir)
         logger.info(`Loading model file ${file}`);
         const model = sequelize.import(path.join(modelsDir, file));
         db[model.name] = model;
+        logger.info(model);
     });
+
+// Run `.associate` if it exists,
+// ie create relationships in the ORM
+Object.values(db)
+  .filter(model => typeof model.associate === "function")
+  .forEach(model => model.associate(db));
 
 // Synchronizing any model changes with database.
 sequelize
