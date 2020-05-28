@@ -134,7 +134,7 @@ class App extends React.Component {
             const {id, model, Processor, Gpu, Rams, price} = computer;
             return (
               <tr key={id}>
-                <td>{i}</td>
+                <td>{id}</td>
                 <td>{model}</td>
                 <td>{Processor.manufacturer} {Processor.model}</td>
                 <td>{Gpu.manufacturer} {Gpu.model}</td>
@@ -163,14 +163,14 @@ class App extends React.Component {
   render() {
     const {loading, processors, gpus, rams, gpuFilter, processorFilter, ramFilter, pcFilter} = this.state;
     return (
-      <div className="App">
+      <div className="App container-fluid">
         <div>
-          <Form>
+          <Form onSubmit={e => e.preventDefault()}>
             <h3>Search</h3>
             <Row>
               <Col>
                 <Form.Group controlId="formBasicEmail">
-                  <Form.Control type="text" value={pcFilter} placeholder="Enter model name" onChange={this.handleSearch}/>
+                  <Form.Control type="text" value={pcFilter} placeholder="Enter Computer model name OR Processor model name OR GPU model name OR RAM model name OR GPU/RAM memory type ..." onChange={this.handleSearch}/>
                 </Form.Group>
               </Col>
             </Row>

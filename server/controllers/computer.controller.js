@@ -48,14 +48,14 @@ function getListFiltered(req, res, next) {
       queryParams["processorFilter"] = processorFilter;
     }
     if (computerFilter) {
-      whereString += ' AND ( UPPER("Computers"."model") LIKE UPPER(CONCAT(:computerFilter, \'%\')) OR ' +
-        ' UPPER("Processors"."model") LIKE UPPER(CONCAT(:computerFilter, \'%\')) OR ' +
-        ' UPPER("Processors"."manufacturer") LIKE UPPER(CONCAT(:computerFilter, \'%\')) OR ' +
-        ' UPPER("Gpus"."model") LIKE UPPER(CONCAT(:computerFilter, \'%\')) OR ' +
-        ' UPPER("Gpus"."manufacturer") LIKE UPPER(CONCAT(:computerFilter, \'%\')) OR ' +
-        ' UPPER("Gpus"."memoryType") LIKE UPPER(CONCAT(:computerFilter, \'%\')) OR ' +
-        ' UPPER("Rams"."model") LIKE UPPER(CONCAT(:computerFilter, \'%\')) OR ' +
-        ' UPPER("Rams"."memoryType") LIKE UPPER(CONCAT(:computerFilter, \'%\')) )';
+      whereString += ' AND ( UPPER("Computers"."model") LIKE UPPER(CONCAT(\'%\', :computerFilter, \'%\')) OR ' +
+        ' UPPER("Processors"."model") LIKE UPPER(CONCAT(\'%\', :computerFilter, \'%\')) OR ' +
+        ' UPPER("Processors"."manufacturer") LIKE UPPER(CONCAT(\'%\', :computerFilter, \'%\')) OR ' +
+        ' UPPER("Gpus"."model") LIKE UPPER(CONCAT(\'%\', :computerFilter, \'%\')) OR ' +
+        ' UPPER("Gpus"."manufacturer") LIKE UPPER(CONCAT(\'%\', :computerFilter, \'%\')) OR ' +
+        ' UPPER("Gpus"."memoryType") LIKE UPPER(CONCAT(\'%\', :computerFilter, \'%\')) OR ' +
+        ' UPPER("Rams"."model") LIKE UPPER(CONCAT(\'%\', :computerFilter, \'%\')) OR ' +
+        ' UPPER("Rams"."memoryType") LIKE UPPER(CONCAT(\'%\', :computerFilter, \'%\')) )';
       queryParams["computerFilter"] = computerFilter;
     }
 
